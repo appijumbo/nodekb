@@ -24,6 +24,12 @@ db.on('error', function(err){
 // Init app
 const app = express();
 
+// Bring in db models
+let Articles = require('./models/articles');
+
+
+
+
 /*
 hbs.localsAsTemplateData(app);
 app.locals.articles = {
@@ -36,42 +42,51 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
 
+
 // Home route
 app.get('/', (req, res) => {
+  /*
+    let articles = [
+      {
+        'id': 1,
+        'title': 'Aricle One',
+        'author': 'Tom O',
+        'body': 'one one one'
+      },
+      {
+        'id': 2,
+        'title': 'Aricle Two',
+        'author': 'Sarah Jane',
+        'body': 'two two two'
+      },
+      {
+        'id': 3,
+        'title': 'Aricle Three',
+        'author': 'Peter Smith',
+        'body': 'three three three'
+      }
+    ];
+  */
 
-  let articles = [
-    {
-      'id': 1,
-      'title': 'Aricle One',
-      'author': 'Tom O',
-      'body': 'one one one'
-    },
-    {
-      'id': 2,
-      'title': 'Aricle Two',
-      'author': 'Sarah Jane',
-      'body': 'two two two'
-    },
-    {
-      'id': 3,
-      'title': 'Aricle Three',
-      'author': 'Peter Smith',
-      'body': 'three three three'
+  Articles.find({}, (err,articles)=>{
+    if(err){
+      console.log('error');
+    } else {
+      res.render('index.hbs', {
+        pageTitle: 'Articles',
+        message: 'Welcome !',
+        articles: articles
+      });
     }
-  ];
-
-   res.render('index.hbs', {
-     pageTitle: 'Articles',
-     message: 'heres the root page',
-     articles: articles
-   });
+  });
 });
+
 
 
 // Article page
 app.get('/article/add', (req, res) => {
    res.render('article.hbs', {
-     pageTitle: 'Article',
+     pageTitle: 'Add an Article',
      message: 'why not add some articles'
    });
 });
