@@ -1,0 +1,28 @@
+{{> docHead}}
+<body>
+  <h1>{{pageTitle}} Page</h1>
+  <br>
+{{> header}}
+  <main>
+
+    <h3>Welcome to this site</h3>
+    <p>{{message}}</p>
+
+
+    {{#each articles}}
+
+      <ul>
+        {{@articles}}
+        <li>{{title}}</li>
+        <li>{{author}}</li>
+        <li>{{body}}</li>
+      </ul>
+
+      <!-- {{this}}  -->
+    {{/each}}
+
+
+  </main>
+{{> footer}}
+</body>
+</html>

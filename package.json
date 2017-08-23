@@ -1,0 +1,29 @@
+{
+  "name": "nodekb",
+  "version": "1.0.0",
+  "description": "simple knowledge based app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/appijumbo/nodekb.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/appijumbo/nodekb/issues"
+  },
+  "homepage": "https://github.com/appijumbo/nodekb#readme",
+  "dependencies": {
+    "express": "^4.15.4",
+    "hbs": "^4.0.1",
+    "mongoose": "^4.11.7"
+  }
+}
