@@ -7,8 +7,19 @@ const mongoose = require('mongoose');
 // Connecting monggose to the router
 mongoose.connect('mongodb://localhost/nodekb');
 
-// to simplify the mongoose.connect syntax
-let db = mongoose.connect;
+// to simplify the mongoose.connection syntax
+let db = mongoose.connection;
+
+// Check connection
+db.once('open', function(){
+  console.log('Connected to mongodb');
+});
+
+
+// Check for db errors
+db.on('error', function(err){
+  console.log(err);
+});
 
 // Init app
 const app = express();
